@@ -1,0 +1,56 @@
+Zadanie 1
+a) Znakowy plik specjalny (c), prawa dostępu: crw--w----.
+b) Nie (brak uprawnień zwykłego użytkownika).
+c) Tekst wyświetli się na ekranie tego samego terminala.
+d) Tekst wyświetli się na Twoim ekranie (wysłany z drugiego terminala).
+e) Tekst wpisywany u Ciebie na klawiaturze będzie na żywo wyświetlał się na drugim terminalu.
+f) Polecenie cat będzie czekać na wprowadzanie znaków z klawiatury i wyświetlać je na ekranie (do wciśnięcia Ctrl+C).
+g) Polecenie: echo "tekst" | tee /dev/pts/1 /dev/pts/2 lub systemowe polecenie wall.
+​Zadanie 2
+a) Znakowy plik specjalny (c), prawa dostępu: crw-rw-rw-.
+b) Przekierowane dane zostaną bezpowrotnie zniszczone/usunięte.
+c) Po zapisie plik nadal pozostanie całkowicie pusty.
+d) 0 bajtów (utworzy się zwykły pusty plik).
+e) Usuwanie i ignorowanie niechcianych komunikatów (wyjścia/błędów) z programów.
+​Zadanie 3
+a) Zwykły plik (-).
+b) Można stworzyć tylko dla pliku (dla katalogów jest to zabronione).
+c) Minimum 2 (liczba dowiązań rośnie o 1).
+d) Tak.
+e) Tak.
+f) Nie (drugi plik i jego zawartość pozostają nienaruszone).
+g) Oszczędność miejsca na dysku (wiele nazw wskazuje na to samo miejsce fizyczne), ochrona przed przypadkowym usunięciem danych.
+​Zadanie 4
+a) Plik typu dowiązanie/skrót (l).
+b) Można stworzyć zarówno dla pliku, jak i dla katalogu.
+c) Liczba dowiązań dla oryginalnego pliku/katalogu nie zmienia się.
+d) Tak.
+e) Tak.
+f) Nie, ale usunięcie pliku źródłowego sprawi, że dowiązanie symboliczne przestanie działać (stanie się martwym skrótem).
+g) Tworzenie wygodnych skrótów i ścieżek do plików/katalogów w innych lokalizacjach.
+​Zadanie 5
+a) Plik typu potok (p).
+b) Terminal przekierowujący dane "zawiesi się" (zablokuje) do czasu, aż drugi terminal je odczyta.
+c) Dane wysyłane z kilku wyjść na raz zostaną połączone/wymieszane w jednym strumieniu w terminalu odczytującym.
+d) Terminal próbujący wyświetlić zawartość zablokuje się w oczekiwaniu, aż ktoś prześle jakiekolwiek dane do potoku.
+e) Komunikacja w czasie rzeczywistym między różnymi procesami/programami bez konieczności zapisywania plików na dysku.
+​Zadanie 6
+a) HOME – Ścieżka do katalogu domowego zalogowanego użytkownika.
+b) LANG – Domyślny język systemu, ustawienia regionalne i kodowanie znaków.
+c) PATH – Lista katalogów, w których system szuka plików wykonywalnych, gdy wpisujesz polecenie.
+d) PWD – Ścieżka do katalogu, w którym aktualnie się znajdujesz.
+e) SHELL – Ścieżka domyślnego interpretera poleceń (np. /bin/bash).
+f) TERM – Typ emulowanego terminala (decyduje o obsłudze kolorów i układzie klawiszy).
+g) USER – Nazwa aktualnie zalogowanego użytkownika.
+​Zadanie 7
+a) Np. typ całkowity: let x=2+2, typ tablicowy: tablica=(1 2 3).
+b) zmienna=5, a następnie echo $zmienna.
+c) zmienna=10, a następnie echo $zmienna (wartość zostanie nadpisana i zmieniona na nową).
+d) W nowym terminalu zmienna nie istnieje (trzeba użyć polecenia export zmienna=wartość, by była dziedziczona, ale do nowej karty to nie zadziała).
+e) Np. readonly x=1. Próba zmiany wartości lub usunięcia (np. unset x) zakończy się wyświetleniem komunikatu o błędzie.
+​Zadanie 8
+Zmienna zniknie. Aby była inicjowana po włączeniu systemu, należy dopisać linijkę export ZMIENNA="wartość" na samym końcu pliku ~/.bashrc.
+​Zadanie 9
+Należy dopisać linijkę alias search='grep -rn' na samym końcu pliku ~/.bashrc.
+​Zadanie 10
+Należy dopisać ścieżkę do katalogu, w którym znajduje się plik example, do zmiennej PATH w pliku ~/.bashrc. Na końcu pliku należy dodać: export PATH=$PATH:/ścieżka/do/katalogu/z/plikiem.
