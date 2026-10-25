@@ -1,0 +1,112 @@
+zad1
+#!/bin/bash
+suma=$(($1 + $2 + $3))
+echo "Suma: $suma"
+
+zad2
+#!/bin/bash
+dl1=${#1}
+dl2=${#2}
+
+if [[ $dl1 -gt $dl2 ]]; then
+    echo "Dłuższy napis to: $1"
+elif [[ $dl2 -gt $dl1 ]]; then
+    echo "Dłuższy napis to: $2"
+else
+    echo "Napisy mają taką samą długość."
+fi
+
+if [[ "$1" < "$2" ]]; then
+    echo "Wcześniej leksykograficznie: $1"
+elif [[ "$1" > "$2" ]]; then
+    echo "Wcześniej leksykograficznie: $2"
+else
+    echo "Napisy są identyczne."
+fi
+
+zad3
+#!/bin/bash
+if [[ -e "$1" ]]; then
+    echo "Podany argument jest poprawną ścieżką."
+    
+    if [[ -f "$1" ]]; then
+        echo "Typ: Zwykły plik"
+    elif [[ -d "$1" ]]; then
+        echo "Typ: Katalog"
+    fi
+
+    echo -n "Prawa dostępu: "
+    [[ -r "$1" ]] && echo -n "odczyt "
+    [[ -w "$1" ]] && echo -n "zapis "
+    [[ -x "$1" ]] && echo -n "wykonanie"
+    echo ""
+else
+    echo "Ścieżka nie istnieje."
+fi
+
+zad4
+#!/bin/bash
+data=$(date +%Y-%m-%d)
+mkdir -p "$data"
+find ~ -maxdepth 1 -type f -newermt "$(date +%Y-%m-%d)" -exec cp {} "$data/" \;
+
+zad5
+#!/bin/bash
+tablica=("$@")
+for (( i=${#tablica[@]}-1; i>=0; i-- )); do
+    echo -n "${tablica[$i]} "
+done
+echo ""
+
+zad6
+#!/bin/bash
+function odwroc_napis {
+    napis=$1
+    odwrocony=""
+    for (( i=${#napis}-1; i>=0; i-- )); do
+        odwrocony="$odwrocony${napis:$i:1}"
+    done
+    echo "$odwrocony"
+}
+odwroc_napis "$1"
+
+zad7
+#!/bin/bash
+ls -A / | grep -c "$1"
+
+zad8
+#!/bin/bash
+if [[ $# -eq 0 ]]; then
+    echo "Brakuje argumentu."
+    exit 1
+fi
+
+case "$1" in
+    *.txt)
+        nano "$1" # lub mcedit / vi
+        ;;
+    *.sh)
+        ./"$1"
+        ;;
+    *)
+        echo "Plik jest nieznany."
+        ;;
+esac
+
+zad9
+#!/bin/bash
+suma=$(( $(echo "$*" | tr ' ' '+') ))
+srednia=$(( suma / $# ))
+echo "Średnia: $srednia"
+
+zad10
+#!/bin/bash
+export test="$1"
+
+
+Uruchomić w podpowłoce: ./skrypt10.sh argument
+Następnie sprawdzić zmienną: echo $test
+Nie zmieni się
+Uruchomić w bieżącej powłoce: . skrypt10.sh argument (lub source skrypt10.sh argument)
+Następnie sprawdzić zmienną: echo $test 
+Teraz się zmieni
